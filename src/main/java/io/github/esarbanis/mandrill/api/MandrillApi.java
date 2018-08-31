@@ -22,7 +22,6 @@ import io.github.esarbanis.mandrill.api.webhooks.MandrillWebhooksApi;
 import io.github.esarbanis.mandrill.api.whitelists.MandrillWhitelistsApi;
 
 /**
- * @author rschreijer
  * @since Mar 17, 2013
  */
 public class MandrillApi {

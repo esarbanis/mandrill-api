@@ -15,7 +15,6 @@ import io.github.esarbanis.mandrill.api.common.MandrillApiError;
 import io.github.esarbanis.mandrill.api.urls.MandrillTimeSeries;
 
 /**
- * @author rschreijer
  * @since Mar 22, 2013
  */
 public final class MandrillTemplatesApiTest extends MandrillTestCase {

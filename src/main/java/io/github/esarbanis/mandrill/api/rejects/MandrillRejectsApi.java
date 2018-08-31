@@ -14,7 +14,6 @@ import io.github.esarbanis.mandrill.api.common.MandrillHelperClasses.MandrillRej
 import io.github.esarbanis.mandrill.api.common.RequestDispatcher;
 
 /**
- * @author rschreijer
  * @since Mar 19, 2013
  */
 public class MandrillRejectsApi extends MandrillSubContext {

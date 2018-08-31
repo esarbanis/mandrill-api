@@ -4,7 +4,6 @@
 package io.github.esarbanis.mandrill.api.common;
 
 /**
- * @author rschreijer
  * @since Jan 8, 2013
  */
 public final class HandleResponseException extends Exception {

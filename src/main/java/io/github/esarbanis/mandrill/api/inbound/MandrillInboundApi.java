@@ -13,7 +13,6 @@ import io.github.esarbanis.mandrill.api.common.MandrillApiError;
 import io.github.esarbanis.mandrill.api.common.RequestDispatcher;
 
 /**
- * @author rschreijer
  * @since Mar 19, 2013
  */
 public class MandrillInboundApi extends MandrillSubContext {

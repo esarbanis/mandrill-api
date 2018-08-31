@@ -7,7 +7,6 @@ import java.util.Date;
 
 /**
  * <p>Information about a template.</p>
- * @author rschreijer
  * @since Mar 18, 2013
  */
 public class MandrillTemplate {

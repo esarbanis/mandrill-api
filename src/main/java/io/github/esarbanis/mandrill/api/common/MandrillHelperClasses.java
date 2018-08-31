@@ -4,7 +4,6 @@
 package io.github.esarbanis.mandrill.api.common;
 
 /**
- * @author rschreijer
  * @since Mar 18, 2013
  */
 public final class MandrillHelperClasses {
@@ -17,8 +16,7 @@ public final class MandrillHelperClasses {
 		}
 	}
 	/**
-	 * @author rschreijer
-	 * @since Sep 27, 2013
+		 * @since Sep 27, 2013
 	 */
 	public static class MandrillRejectsAdded extends EmailClass {
 		/*
@@ -31,8 +29,7 @@ public final class MandrillHelperClasses {
 	}
 	
 	/**
-	 * @author rschreijer
-	 * @since Mar 18, 2013
+		 * @since Mar 18, 2013
 	 */
 	public static class MandrillRejectsDeleted extends EmailClass {
 		/*
@@ -47,8 +44,7 @@ public final class MandrillHelperClasses {
 	/**
 	 * <p>Simple Wrapper class that is a container for a 
 	 * <code>name,content</code> pair, as String objects.</p>
-	 * @author rschreijer
-	 * @since Mar 18, 2013
+		 * @since Mar 18, 2013
 	 */
 	public static final class MandrillContentWrapper {
 		private String name, content;
@@ -96,8 +92,7 @@ public final class MandrillHelperClasses {
 	/**
 	 * <p>The result of rendering the given template with the 
 	 * content and merge field values injected.</p>
-	 * @author rschreijer
-	 * @since Mar 18, 2013
+		 * @since Mar 18, 2013
 	 */
 	public static final class MandrillRenderTemplateResponse {
 		private String html;

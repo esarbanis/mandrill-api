@@ -7,7 +7,6 @@ import java.util.Date;
 
 /**
  * <p>Information about a whitelist entry.</p>
- * @author rschreijer
  *
  */
 public class MandrillWhitelistEntry {

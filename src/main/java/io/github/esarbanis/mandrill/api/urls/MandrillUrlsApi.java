@@ -12,7 +12,6 @@ import io.github.esarbanis.mandrill.api.common.MandrillSubContext;
 import io.github.esarbanis.mandrill.api.common.RequestDispatcher;
 
 /**
- * @author rschreijer
  * @since Mar 19, 2013
  */
 public class MandrillUrlsApi extends MandrillSubContext {

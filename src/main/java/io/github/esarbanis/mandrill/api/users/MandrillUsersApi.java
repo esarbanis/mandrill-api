@@ -14,7 +14,6 @@ import io.github.esarbanis.mandrill.api.senders.MandrillSender;
 /**
  * <p></p>
  *
- * @author rschreijer
  * @since Mar 19, 2013
  */
 public class MandrillUsersApi extends MandrillSubContext {

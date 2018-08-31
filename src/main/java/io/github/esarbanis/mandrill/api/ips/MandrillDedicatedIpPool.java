@@ -7,7 +7,6 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @author rschreijer
  *
  */
 public class MandrillDedicatedIpPool {

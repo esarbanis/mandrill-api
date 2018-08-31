@@ -13,7 +13,6 @@ import org.junit.Test;
 import io.github.esarbanis.mandrill.api.common.MandrillApiError;
 
 /**
- * @author rschreijer
  * @since Mar 21, 2013
  */
 public final class MandrillRejectsApiTest extends MandrillTestCase {

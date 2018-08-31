@@ -15,7 +15,6 @@ import io.github.esarbanis.mandrill.api.common.RequestDispatcher;
 
 /**
  * <p>Exports Calls.</p>
- * @author rschreijer
  *
  */
 public class MandrillExportsApi extends MandrillSubContext {

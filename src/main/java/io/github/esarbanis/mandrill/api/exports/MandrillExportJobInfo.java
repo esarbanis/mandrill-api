@@ -6,7 +6,6 @@ package io.github.esarbanis.mandrill.api.exports;
 import java.util.Date;
 
 /**
- * @author rschreijer
  *
  */
 public class MandrillExportJobInfo {

@@ -6,7 +6,6 @@ import io.github.esarbanis.mandrill.api.senders.MandrillSender;
 
 /**
  * <p>Information for a rejection blacklist entry.</p>
- * @author rschreijer
  * @since Mar 18, 2013
  */
 public class MandrillRejectsEntry {

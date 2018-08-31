@@ -17,7 +17,6 @@ import io.github.esarbanis.mandrill.api.common.RequestDispatcher;
 import io.github.esarbanis.mandrill.api.urls.MandrillTimeSeries;
 
 /**
- * @author rschreijer
  * @since Mar 19, 2013
  */
 public class MandrillTemplatesApi extends MandrillSubContext {

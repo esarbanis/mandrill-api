@@ -2,7 +2,6 @@ package io.github.esarbanis.mandrill.api.inbound;
 
 /**
  * <p>Recipient information.</p>
- * @author rschreijer
  * @since Mar 19, 2013
  */
 public class MandrillInboundRecipient {

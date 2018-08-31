@@ -9,7 +9,6 @@ import io.github.esarbanis.mandrill.api.common.StatsBucket;
 
 /**
  * <p>A time series holds stats for a single hour.</p>
- * @author rschreijer
  * @since Mar 16, 2013
  */
 public class MandrillTimeSeries extends StatsBucket.Stats {

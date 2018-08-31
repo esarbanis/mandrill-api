@@ -15,7 +15,6 @@ import io.github.esarbanis.mandrill.api.urls.MandrillTimeSeries;
 
 /**
  * <p>Tests for the tags api implementations.</p>
- * @author rschreijer
  * @since Mar 21, 2013
  */
 public final class MandrillTagsApiTest extends MandrillTestCase {

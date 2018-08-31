@@ -8,7 +8,6 @@ import java.util.Date;
 import io.github.esarbanis.mandrill.api.common.StatsBucket.Stats;
 
 /**
- * @author rschreijer
  *
  */
 public class MandrillSubaccountInfo {

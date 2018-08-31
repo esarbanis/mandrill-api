@@ -4,7 +4,6 @@
 package io.github.esarbanis.mandrill.api.common;
 
 /**
- * @author rschreijer
  * @since Mar 17, 2013
  */
 public class MandrillApiError extends Exception {

@@ -7,7 +7,6 @@ import io.github.esarbanis.mandrill.api.common.StatsBucket;
 
 /**
  * <p>A user-defined tag w/ attached statistics.</p>
- * @author rschreijer
  * @since Mar 16, 2013
  */
 public class MandrillTag extends StatsBucket.Stats {

@@ -7,7 +7,6 @@ import java.util.Date;
 
 /**
  * <p>Info about a webhook.</p>
- * @author rschreijer
  * @since Mar 18, 2013
  */
 public class MandrillWebhook {

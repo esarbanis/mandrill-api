@@ -7,7 +7,6 @@ import java.util.Date;
 
 /**
  * <p>Info about an inbound domain.</p>
- * @author rschreijer
  * @since Mar 18, 2013
  */
 public class MandrillInboundDomain {

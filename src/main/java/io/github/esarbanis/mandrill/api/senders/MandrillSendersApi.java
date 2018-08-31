@@ -14,7 +14,6 @@ import io.github.esarbanis.mandrill.api.senders.MandrillDomain.MandrillDomainVer
 import io.github.esarbanis.mandrill.api.urls.MandrillTimeSeries;
 
 /**
- * @author rschreijer
  * @since Mar 19, 2013
  */
 public class MandrillSendersApi extends MandrillSubContext {

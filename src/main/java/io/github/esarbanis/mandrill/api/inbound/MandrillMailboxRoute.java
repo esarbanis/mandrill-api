@@ -5,7 +5,6 @@ package io.github.esarbanis.mandrill.api.inbound;
 
 /**
  * <p>A mailbox route.</p>
- * @author rschreijer
  * @since Mar 19, 2013
  */
 public class MandrillMailboxRoute {

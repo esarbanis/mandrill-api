@@ -6,7 +6,6 @@ package io.github.esarbanis.mandrill.api.common;
 /**
  * <p>Simple Wrapper class that is a container for a 
  * <code>name,content</code> pair, as String objects.</p>
- * @author rschreijer
  * @since Mar 18, 2013
  */
 public final class MandrillContentWrapper {

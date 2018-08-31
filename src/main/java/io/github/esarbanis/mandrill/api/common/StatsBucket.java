@@ -5,7 +5,6 @@ package io.github.esarbanis.mandrill.api.common;
 
 /**
  * <p>An aggregate summary of sending stats.</p>
- * @author rschreijer
  * @since Mar 16, 2013
  */
 public class StatsBucket {
@@ -51,8 +50,7 @@ public class StatsBucket {
 
 	/**
 	 * <p>Stats.</p>
-	 * @author rschreijer
-	 * @since Mar 16, 2013
+		 * @since Mar 16, 2013
 	 */
 	public static class Stats {
 		private Integer sent, hard_bounces, soft_bounces, rejects;

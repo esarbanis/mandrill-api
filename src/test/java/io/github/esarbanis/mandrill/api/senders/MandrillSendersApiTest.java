@@ -15,7 +15,6 @@ import io.github.esarbanis.mandrill.api.urls.MandrillTimeSeries;
 
 /**
  * <p>Tests for the senders api implementations.</p>
- * @author rschreijer
  * @since Mar 21, 2013
  */
 public final class MandrillSendersApiTest extends MandrillTestCase {

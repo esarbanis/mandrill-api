@@ -14,7 +14,6 @@ import io.github.esarbanis.mandrill.api.common.RequestDispatcher;
 import io.github.esarbanis.mandrill.api.ips.MandrillDedicatedIp.MandrillDnsCheck;
 
 /**
- * @author rschreijer
  *
  */
 public class MandrillIpsApi extends MandrillSubContext {

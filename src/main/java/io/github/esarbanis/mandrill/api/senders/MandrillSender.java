@@ -10,7 +10,6 @@ import io.github.esarbanis.mandrill.api.common.StatsBucket.Stats;
 
 /**
  * <p>Information on a sending address in the account.</p>
- * @author rschreijer
  * @since Mar 16, 2013
  */
 public class MandrillSender extends Stats {

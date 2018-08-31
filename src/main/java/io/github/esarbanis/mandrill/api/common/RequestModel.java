@@ -9,7 +9,6 @@ import org.apache.http.client.methods.HttpRequestBase;
 
 /**
  * 
- * @author rschreijer
  * @since Jan 7, 2013
  * @param <V> The type that response-data/ response-content is parsed to.
  */

@@ -7,7 +7,6 @@ import java.util.Date;
 
 /**
  * <p>Information on a sending domain for the account.</p>
- * @author rschreijer
  * @since Mar 18, 2013
  */
 public class MandrillDomain {
@@ -102,8 +101,7 @@ public class MandrillDomain {
 	
 	/**
 	 * Information about a verification that was sent.
-	 * @author rschreijer
-	 *
+		 *
 	 */
 	public class MandrillDomainVerificationInfo {
 		private String status, domain, email;

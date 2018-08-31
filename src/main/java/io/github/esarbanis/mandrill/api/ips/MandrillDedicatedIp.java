@@ -7,7 +7,6 @@ import java.util.Date;
 
 /**
  * <p>Info about a dedicated IP.</p>
- * @author rschreijer
  *
  */
 public class MandrillDedicatedIp {
@@ -56,8 +55,7 @@ public class MandrillDedicatedIp {
 
 	/**
 	 * <p>Information about an IP's custom dns.</p>
-	 * @author rschreijer
-	 *
+		 *
 	 */
 	public static class CustomDns {
 		private Boolean enabled, valid;
@@ -87,8 +85,7 @@ public class MandrillDedicatedIp {
 	
 	/**
 	 * <p>Information about the ip's warmup status.</p>
-	 * @author rschreijer
-	 *
+		 *
 	 */
 	public static class WarmupStatus {
 		private Boolean warming_up;
@@ -116,8 +113,7 @@ public class MandrillDedicatedIp {
 	
 	/**
 	 * <p>Validation results for a domain.</p>
-	 * @author rschreijer
-	 *
+		 *
 	 */
 	public static class MandrillDnsCheck {
 		private Boolean valid;

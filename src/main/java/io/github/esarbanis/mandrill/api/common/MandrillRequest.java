@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import java.util.Map;
 
 /**
- * @author rschreijer
  * @since Mar 16, 2013
  */
 public final class MandrillRequest<OUT> implements RequestModel<OUT> {
