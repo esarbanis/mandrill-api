@@ -1,28 +1,6 @@
-# Java class files
-*.class
-# Java Package Files
-*.jar
-*.war
-*.ear
-
 # Maven
 target/
-release.properties
-
-# Eclipse project files
-.classpath
-.project
-.settings
 
 # IntelliJ
 .idea
 *.iml
-
-# Spring
-.springBeans
-
-# General
-.DS_Store
-
-# my api key
-myapikey.txt
