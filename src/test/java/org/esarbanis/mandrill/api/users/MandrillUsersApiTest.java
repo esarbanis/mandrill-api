@@ -1,50 +1,59 @@
 /**
- * 
+ *
  */
 package org.esarbanis.mandrill.api.users;
 
 import java.io.IOException;
 
-import junit.framework.Assert;
-
-import org.junit.Test;
-
+import org.esarbanis.mandrill.api.Fixtures;
 import org.esarbanis.mandrill.api.MandrillTestCase;
 import org.esarbanis.mandrill.api.common.MandrillApiError;
 import org.esarbanis.mandrill.api.senders.MandrillSender;
-import org.esarbanis.mandrill.api.users.MandrillUserInfo;
+import org.junit.Test;
 
-/**
- * <p>Tests for the users api implementations.</p>
- * @author rschreijer
- * @since Mar 21, 2013
- */
+import junit.framework.Assert;
+
 public final class MandrillUsersApiTest extends MandrillTestCase {
-	
+
 	@Test
 	public final void testInfo() throws IOException, MandrillApiError {
-		final MandrillUserInfo userInfo = mandrillApi.users().info();
-		Assert.assertNotNull(userInfo);
-		Assert.assertNotNull(userInfo.getPublicId());
-		Assert.assertNotNull(userInfo.getUsername());
-		Assert.assertNotNull(userInfo.getCreatedAt());
-		Assert.assertTrue(userInfo.getReputation() >= 0);
-		Assert.assertTrue(userInfo.getReputation() <= 100);
-		Assert.assertTrue(userInfo.getHourlyQuota() >= 0);
-		Assert.assertNotNull(userInfo.getStats());
+		mockResponse("/users/info.json", 200, Fixtures.Users.INFO_RESPONSE);
+
+		final MandrillUserInfo userInfoResult = mandrillApi.users().info();
+		Assert.assertNotNull(userInfoResult);
+		Assert.assertNotNull(userInfoResult.getPublicId());
+		Assert.assertNotNull(userInfoResult.getUsername());
+		Assert.assertNotNull(userInfoResult.getCreatedAt());
+		Assert.assertTrue(userInfoResult.getReputation() >= 0);
+		Assert.assertTrue(userInfoResult.getReputation() <= 100);
+		Assert.assertTrue(userInfoResult.getHourlyQuota() >= 0);
+		Assert.assertNotNull(userInfoResult.getStats());
 	}
-	
+
 	@Test
 	public final void testPing() throws IOException, MandrillApiError {
+		mockResponse("/users/ping.json", 200, Fixtures.Users.PING_RESPONSE);
+
 		final String pong = mandrillApi.users().ping();
 		Assert.assertEquals("PONG!", pong);
 	}
-	
+
+	@Test
+	public final void testPing2() throws IOException, MandrillApiError {
+		mockResponse("/users/ping2.json", 200, Fixtures.Users.PING2_RESPONSE);
+
+		final MandrillUserPingInfo pong = mandrillApi.users().ping2();
+		Assert.assertNotNull(pong);
+		Assert.assertEquals("PONG!", pong.getPING());
+	}
+
 	@Test
 	public final void testSenders() throws IOException, MandrillApiError {
+		mockResponse("/users/senders.json", 200, Fixtures.Users.SENDERS_RESPONSE);
+
 		final MandrillSender[] senders = mandrillApi.users().senders();
 		Assert.assertNotNull(senders);
-		if(senders.length > 0) {
+		if (senders.length > 0) {
 			Assert.assertNotNull(senders[0].getAddress());
 			Assert.assertNotNull(senders[0].getCreatedAt());
 		}

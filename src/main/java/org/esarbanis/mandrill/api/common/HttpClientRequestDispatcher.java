@@ -20,6 +20,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class HttpClientRequestDispatcher implements RequestDispatcher {
+
 	private static final Logger LOG = LoggerFactory.getLogger(HttpClientRequestDispatcher.class);
 
 	private final CloseableHttpClient httpClient;
@@ -33,15 +34,18 @@ public class HttpClientRequestDispatcher implements RequestDispatcher {
 		this.serializer = serializer;
 		PoolingHttpClientConnectionManager connexionManager = new PoolingHttpClientConnectionManager();
 		connexionManager.setDefaultMaxPerRoute(50);
-		RequestConfig defaultRequestConfig = RequestConfig.custom()
-				.setSocketTimeout(0)
-				.setConnectTimeout(0)
-				.setConnectionRequestTimeout(0)
-				.build();
-		httpClient = HttpClients.custom().setUserAgent("/Lutung-0.1")
+		RequestConfig defaultRequestConfig = RequestConfig.custom().setSocketTimeout(0).setConnectTimeout(0).setConnectionRequestTimeout(0).build();
+		httpClient = HttpClients.custom()
+				.setUserAgent("/Lutung-0.1")
 				.setDefaultRequestConfig(defaultRequestConfig)
-				.setConnectionManager(connexionManager).useSystemProperties()
+				.setConnectionManager(connexionManager)
+				.useSystemProperties()
 				.build();
+	}
+
+	public HttpClientRequestDispatcher(JsonSerializer serializer, CloseableHttpClient httpClient) {
+		this.serializer = serializer;
+		this.httpClient = httpClient;
 	}
 
 	@Override
@@ -53,12 +57,12 @@ public class HttpClientRequestDispatcher implements RequestDispatcher {
 			final HttpClientRequestDispatcher.ProxyData proxyData = detectProxyServer(requestModel.getUrl());
 			if (proxyData != null) {
 				if (LOG.isDebugEnabled()) {
-					LOG.debug(String.format("Using proxy @" + proxyData.host + ":" + String.valueOf(proxyData.port)));
+					LOG.debug("Using proxy @{}:{}", proxyData.host, proxyData.port);
 				}
 				final HttpHost proxy = new HttpHost(proxyData.host, proxyData.port);
 				httpClient.getParams().setParameter(ConnRoutePNames.DEFAULT_PROXY, proxy);
 			}
-			LOG.debug("starting request '" + requestModel.getUrl() + "'");
+			LOG.debug("starting request '{}'", requestModel.getUrl());
 			response = httpClient.execute(requestModel.getRequest());
 			final StatusLine status = response.getStatusLine();
 			responseString = EntityUtils.toString(response.getEntity());
@@ -99,10 +103,10 @@ public class HttpClientRequestDispatcher implements RequestDispatcher {
 	private HttpClientRequestDispatcher.ProxyData detectProxyServer(final String url) {
 		try {
 			final List<Proxy> proxies = ProxySelector.getDefault().select(new URI(url));
-			if(proxies != null) {
-				for(Proxy proxy : proxies) {
+			if (proxies != null) {
+				for (Proxy proxy : proxies) {
 					InetSocketAddress addr = (InetSocketAddress) proxy.address();
-					if(addr != null) {
+					if (addr != null) {
 						return new HttpClientRequestDispatcher.ProxyData(addr.getHostName(), addr.getPort());
 					}
 				}
@@ -118,6 +122,7 @@ public class HttpClientRequestDispatcher implements RequestDispatcher {
 	}
 
 	private static final class ProxyData {
+
 		String host;
 		int port;
 

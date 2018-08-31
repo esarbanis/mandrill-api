@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.esarbanis.mandrill.api.users;
 
@@ -25,7 +25,7 @@ public class MandrillUserInfo {
 	}
 
 	/**
-	 * @return The date and time that the user's Mandrill account was 
+	 * @return The date and time that the user's Mandrill account was
 	 * created (UTC).
 	 */
 	public Date getCreatedAt() {
@@ -40,7 +40,7 @@ public class MandrillUserInfo {
 	}
 
 	/**
-	 * @return The reputation of the user on a scale from 0 
+	 * @return The reputation of the user on a scale from 0
 	 * to 100, with 75 generally being a "good" reputation.
 	 */
 	public Integer getReputation() {
@@ -48,9 +48,9 @@ public class MandrillUserInfo {
 	}
 
 	/**
-	 * @return The maximum number of emails Mandrill will deliver 
-	 * for this user each hour. Any emails beyond that will be 
-	 * accepted and queued for later delivery. Users with higher 
+	 * @return The maximum number of emails Mandrill will deliver
+	 * for this user each hour. Any emails beyond that will be
+	 * accepted and queued for later delivery. Users with higher
 	 * reputations will have higher hourly quotas.
 	 */
 	public Integer getHourlyQuota() {
@@ -58,7 +58,7 @@ public class MandrillUserInfo {
 	}
 
 	/**
-	 * @return The number of emails that are queued for delivery 
+	 * @return The number of emails that are queued for delivery
 	 * due to exceeding your monthly or hourly quotas.
 	 */
 	public Integer getBacklog() {

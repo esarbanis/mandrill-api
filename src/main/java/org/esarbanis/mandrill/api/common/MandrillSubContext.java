@@ -19,7 +19,7 @@ public abstract class MandrillSubContext {
 	 * @return
 	 */
 	protected final HashMap<String,Object> paramsWithKey(final String key) {
-		final HashMap<String,Object> params = new HashMap<String,Object>();
+		final HashMap<String,Object> params = new HashMap<>();
 		params.put("key",key);
 		return params;
 
@@ -38,7 +38,7 @@ public abstract class MandrillSubContext {
 			throws MandrillApiError, IOException {
 
 		final MandrillRequest<OUT> requestModel =
-				new MandrillRequest<OUT>(url, params, responseType, jsonSerializer);
+				new MandrillRequest<>(url, params, responseType, jsonSerializer);
 		return requestDispatcher.dispatch(requestModel);
 
 	}

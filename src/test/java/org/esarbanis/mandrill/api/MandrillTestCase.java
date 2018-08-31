@@ -1,83 +1,60 @@
 /**
- * 
+ *
  */
 package org.esarbanis.mandrill.api;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.Charset;
+import static org.mockito.ArgumentMatchers.argThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
-import org.junit.Assume;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.StatusLine;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.esarbanis.mandrill.api.common.GsonJsonSerializer;
+import org.esarbanis.mandrill.api.common.HttpClientRequestDispatcher;
+import org.esarbanis.mandrill.api.common.JsonSerializer;
+import org.esarbanis.mandrill.api.common.RequestDispatcher;
 import org.junit.Before;
-import org.junit.BeforeClass;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.mockito.Mockito;
 
 /**
  * @author rschreijer
- *
  */
 public abstract class MandrillTestCase {
-	private static final Logger log = LoggerFactory.getLogger(MandrillApiTest.class);
-	
-	protected static MandrillApi mandrillApi;
-	
-	/**
-	 * <p>If you want to run your own tests, either provide a file
-	 * 'myapikey.txt' on your classpath, or simply change this 
-	 * method to return your hard-coded string.</p>
-	 * <p>If you provide a file, this file should ONLY contain your
-	 * Mandrill api key, as plain text in ONLY ONE line. This also 
-	 * allows you to keep your api key secret since 'myapikey.txt'
-	 * is mentioned in .gitignore and will not be pushed to git!</p> 
-	 * @return Your Mandrill API key.
-	 */
-	protected static final String getMandrillApiKey() {
-		try {
-			final InputStream is = MandrillTestCase.class.getClassLoader()
-					.getResourceAsStream("myapikey.txt");
-			if(is == null) {
-				throw new FileNotFoundException(
-						"Please change " +MandrillTestCase.class.getCanonicalName()
-						+ ".getMandrillApiKey() to just return your Mandrill " +
-						"api key. The file being loaded in that method is just " +
-						"a security measure ... I didn't want my own api key in " +
-						"a public git repo ;-)");
-			}
-			final String apikey = "";//IOUtils.toString(is, Charset.forName("utf8"));
-			is.close();
-			if(apikey == null || apikey.isEmpty()) {
-				throw new IOException("Empty file 'myapikey.txt'");
 
-			}
-			return apikey;
+	protected static String KEY = "KEY";
+	protected static String ROOT_URL = "http://example.com/";
 
-		} catch(final IOException e) {
-			log.error("No Mandrill API key defined - " +
-					"please provide your Mandrill API key!", e);
-			return null;
+	protected MandrillApi mandrillApi;
+	protected CloseableHttpClient httpClient;
 
-		}
-	}
-	
-	@BeforeClass
-	public static final void runBeforeClass() {
-		final String key = getMandrillApiKey();
-		if(key != null) {
-			mandrillApi = new MandrillApi(key);
-		} else {
-			mandrillApi = null;
-		}
+	protected void mockResponse(String apiPath, int status, String json) throws IOException {
+		CloseableHttpResponse response = mock(CloseableHttpResponse.class);
+		StatusLine statusLine = mock(StatusLine.class);
+		HttpEntity httpEntity = mock(HttpEntity.class);
+
+		when(httpEntity.getContent()).thenReturn(new ByteArrayInputStream(json.getBytes()));
+		when(httpEntity.isStreaming()).thenReturn(true);
+		when(statusLine.getStatusCode()).thenReturn(status);
+		when(response.getStatusLine()).thenReturn(statusLine);
+		when(response.getEntity()).thenReturn(httpEntity);
+		when(httpClient.execute(argThat(argument -> argument.getURI().getPath().equals(apiPath)))).thenReturn(response);
 	}
 
-	protected static final String mailToAddress() {
-		return "someone.mandrill@gmail.com";
-	}
-	
 	@Before
-	public final void runBefore() {
-		Assume.assumeNotNull(mandrillApi);
+	public void setup() {
+		httpClient = mock(CloseableHttpClient.class);
+		RequestDispatcher requestDispatcher = new HttpClientRequestDispatcher(new GsonJsonSerializer(), httpClient);
+
+		mandrillApi = new MandrillApi(KEY, ROOT_URL, requestDispatcher, new GsonJsonSerializer());
+	}
+
+	protected static String mailToAddress() {
+		return "someone.mandrill@gmail.com";
 	}
 
 }
