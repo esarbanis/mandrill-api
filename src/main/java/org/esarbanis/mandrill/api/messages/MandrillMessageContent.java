@@ -6,8 +6,6 @@ import java.util.Map;
 /**
  * <p>The content of a sent message.  Corresponds to the result of {@code messages/content.json}.</p>
  *
- * @author benfastmodel
- * @since Feb 12, 2014
  */
 public class MandrillMessageContent {
     private Long ts;

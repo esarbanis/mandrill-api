@@ -7,8 +7,6 @@ import java.util.Date;
 
 /**
  * <p>Search parameters for message searching.</p>
- * @author rschreijer
- * @since Mar 16, 2013
  */
 public class MandrillSearchMessageParams {
 	private String query;
@@ -85,28 +83,28 @@ public class MandrillSearchMessageParams {
 		this.senders = senders;
 	}
 	/**
-	 * @return An array of API keys to narrow the search to, 
+	 * @return An array of API keys to narrow the search to,
 	 * will return messages sent by ANY of the keys.
 	 */
 	public String[] getApiKeys() {
 		return api_keys;
 	}
 	/**
-	 * @param api_keys An array of API keys to narrow the search to, 
+	 * @param api_keys An array of API keys to narrow the search to,
 	 * will return messages sent by ANY of the keys.
 	 */
 	public void setApiKeys(final String[] api_keys) {
 		this.api_keys = api_keys;
 	}
 	/**
-	 * @return The maximum number of results to return, 
+	 * @return The maximum number of results to return,
 	 * defaults to 100, 1000 is the maximum.
 	 */
 	public Integer getLimit() {
 		return limit;
 	}
 	/**
-	 * @param limit The maximum number of results to return, 
+	 * @param limit The maximum number of results to return,
 	 * defaults to 100, 1000 is the maximum.
 	 */
 	public void setLimit(final Integer limit) {

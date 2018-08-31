@@ -22,7 +22,7 @@ import org.junit.Before;
 import org.mockito.Mockito;
 
 /**
- * @author rschreijer
+ *
  */
 public abstract class MandrillTestCase {
 

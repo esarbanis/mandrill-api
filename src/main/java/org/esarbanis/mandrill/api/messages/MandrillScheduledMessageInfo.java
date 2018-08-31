@@ -7,7 +7,7 @@ import java.util.Date;
 
 /**
  * <p>Info on a scheduled email.</p>
- * @author rschreijer
+
  *
  */
 public class MandrillScheduledMessageInfo {

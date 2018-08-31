@@ -32,4 +32,57 @@ public abstract class Fixtures {
 				+ "\"unique_opens\":42,\"unique_clicks\":42}]";
 
 	}
+
+	public static class Messages {
+
+		public static final String SEND_NO_MESSAGE_ERROR_RESPONSE =
+				"{\"status\":\"error\",\"code\":-1,\"name\":\"ValidationError\",\"message\":\"You must " + "specify a message value\"}";
+
+		public static final String SEND_RESPONSE =
+				"[{\"email\":\"recipient.email@example.com\",\"status\":\"sent\",\"reject_reason\":\"hard-bounce\","
+						+ "\"_id\":\"abc123abc123abc123abc123abc123\"}]";
+
+		public static final String SEND_TEMPLATE_RESPONSE = "[{\"email\":\"recipient.email@example.com\",\"status\":\"sent\","
+				+ "\"reject_reason\":\"hard-bounce\",\"_id\":\"abc123abc123abc123abc123abc123\"}]";
+
+		public static final String SEND_TEMPLATE_NO_TEMPLATE_ERROR_RESPONSE =
+				"{\"status\":\"error\",\"code\":12,\"name\":\"Unknown_Template\",\"message\":\"The" + " requested template does not exist\"}";
+
+		public static final String SEND_TEMPLATE_NO_SUBACCOUNT_ERROR_RESPONSE = "{\"status\":\"error\",\"code\":12,\"name\":\"Unknown_Subaccount\","
+				+ "\"message\":\"The provided subaccount id does not exist.\"}";
+
+		public static final String SEARCH_RESPONSE =
+				"[\n" + "    {\n" + "        \"ts\": 1365190000,\n" + "        \"_id\": \"abc123abc123abc123abc123\",\n"
+						+ "        \"sender\": \"sender@example.com\",\n" + "        \"template\": \"example-template\",\n"
+						+ "        \"subject\": \"example subject\",\n" + "        \"email\": \"recipient.email@example.com\",\n"
+						+ "        \"tags\": [\n" + "            \"password-reset\"\n" + "        ],\n" + "        \"opens\": 42,\n"
+						+ "        \"opens_detail\": [\n" + "            {\n" + "                \"ts\": 1365190001,\n"
+						+ "                \"ip\": \"55.55.55.55\",\n" + "                \"location\": \"Georgia, US\",\n"
+						+ "                \"ua\": \"Linux/Ubuntu/Chrome/Chrome 28.0.1500.53\"\n" + "            }\n" + "        ],\n"
+						+ "        \"clicks\": 42,\n" + "        \"clicks_detail\": [\n" + "            {\n" + "                \"ts\": "
+						+ "1365190001,\n"
+						+ "                \"url\": \"http://www.example.com\",\n" + "                \"ip\": \"55.55.55.55\",\n"
+						+ "                \"location\": \"Georgia, US\",\n" + "                \"ua\": \"Linux/Ubuntu/Chrome/Chrome 28.0.1500"
+						+ ".53\"\n"
+						+ "            }\n" + "        ],\n" + "        \"state\": \"sent\",\n" + "        \"metadata\": {\n"
+						+ "            \"user_id\": \"123\",\n" + "            \"website\": \"www.example.com\"\n" + "        }\n" + "    }\n" + "]";
+
+		public static final String CONTENT_RESPONSE = "{\n" + "    \"ts\": 1365190000,\n" + "    \"_id\": \"abc123abc123abc123abc123\",\n"
+				+ "    \"from_email\": \"sender@example.com\",\n" + "    \"from_name\": \"Sender Name\",\n"
+				+ "    \"subject\": \"example subject\",\n" + "    \"to\": {\n" + "        \"email\": \"recipient.email@example.com\",\n"
+				+ "        \"name\": \"Recipient Name\"\n" + "    },\n" + "    \"tags\": [\n" + "        \"password-reset\"\n" + "    ],\n"
+				+ "    \"headers\": {\n" + "        \"Reply-To\": \"replies@example.com\"\n" + "    },\n" + "    \"text\": \"Some text content\",\n"
+				+ "    \"html\": \"<p>Some HTML content</p>\",\n" + "    \"attachments\": [\n" + "        {\n"
+				+ "            \"name\": \"example.txt\",\n" + "            \"type\": \"text/plain\",\n"
+				+ "            \"content\": \"QSBzaW1wbGUgdGV4dCBzdHJpbmcgYXR0YWNobWVudA==\"\n" + "        }\n" + "    ]\n" + "}";
+
+		public static final String PARSE_RESPONSE = "{\"subject\":\"Some Subject\",\"from_email\":\"sender@example.com\",\"from_name\":\"Sender "
+				+ "Name\",\"to\":[{\"email\":\"recipient.email@example.com\",\"name\":\"Recipient Name\"}],"
+				+ "\"headers\":{\"Reply-To\":\"replies@example.com\"},\"text\":\"Some text content\",\"html\":\"<p>Some HTML content</p>\","
+				+ "\"attachments\":[{\"name\":\"example.txt\",\"type\":\"text/plain\",\"binary\":false,\"content\":\"example non-binary content\"}],"
+				+ "\"images\":[{\"name\":\"IMAGEID\",\"type\":\"image/png\",\"content\":\"ZXhhbXBsZSBmaWxl\"}]}";
+
+		public static final String PARSE_ERROR_RESPONSE = "{\"status\":\"error\",\"code\":-1,\"name\":\"ValidationError\",\"message\":\"You must "
+				+ "specify a raw_message value\"}";
+	}
 }

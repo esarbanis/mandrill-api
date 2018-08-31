@@ -5,8 +5,6 @@ package org.esarbanis.mandrill.api.messages;
 
 /**
  * <p>The sending results for a single recipient.</p>
- * @author rschreijer
- * @since Mar 16, 2013
  */
 public class MandrillMessageStatus {
 	private String email, status, reject_reason, _id;

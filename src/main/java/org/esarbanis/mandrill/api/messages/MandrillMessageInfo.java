@@ -8,8 +8,7 @@ import java.util.Map;
 
 /**
  * <p>Basic information for a message.</p>
- * @author rschreijer
- * @since Mar 16, 2013
+ *
  */
 public class MandrillMessageInfo {
     private Long ts;

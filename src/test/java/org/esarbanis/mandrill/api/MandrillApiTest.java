@@ -8,8 +8,7 @@ import junit.framework.Assert;
 import org.junit.Test;
 
 /**
- * @author rschreijer
- * @since Mar 21, 2013
+ *
  */
 public final class MandrillApiTest extends MandrillTestCase {
 	

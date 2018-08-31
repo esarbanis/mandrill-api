@@ -16,8 +16,7 @@ import org.esarbanis.mandrill.api.common.MandrillSubContext;
 import org.esarbanis.mandrill.api.common.RequestDispatcher;
 import org.esarbanis.mandrill.api.urls.MandrillTimeSeries;
 /**
- * @author rschreijer
- * @since Mar 19, 2013
+ *
  */
 public class MandrillMessagesApi extends MandrillSubContext {
 	private final String key;
