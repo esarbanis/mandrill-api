@@ -7,8 +7,10 @@ import junit.framework.Assert;
 
 import io.github.esarbanis.mandrill.api.common.MandrillApiError;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
+@Ignore("Need to wire mocks")
 public final class MandrillWhitelistsApiTest extends MandrillTestCase {
 	
 	@Test(expected= MandrillApiError.class)

@@ -8,18 +8,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.junit.Assume;
+import org.junit.Test;
+
 import io.github.esarbanis.mandrill.api.Fixtures;
 import io.github.esarbanis.mandrill.api.MandrillTestCase;
 import io.github.esarbanis.mandrill.api.common.GsonJsonSerializer;
-import io.github.esarbanis.mandrill.api.common.JsonSerializer;
 import io.github.esarbanis.mandrill.api.common.MandrillApiError;
 import io.github.esarbanis.mandrill.api.messages.MandrillMessage.Recipient;
 import io.github.esarbanis.mandrill.api.messages.MandrillMessage.Recipient.Type;
 import io.github.esarbanis.mandrill.api.messages.MandrillMessageInfo.SMTPEvent;
-
-import org.junit.Assume;
-import org.junit.Test;
-
 import junit.framework.Assert;
 
 /**
@@ -30,7 +28,7 @@ import junit.framework.Assert;
  */
 public final class MandrillMessagesApiTest extends MandrillTestCase {
 
-	JsonSerializer jsonSerializer = new GsonJsonSerializer();
+	GsonJsonSerializer jsonSerializer = new GsonJsonSerializer();
 
 	@Test(expected = MandrillApiError.class)
 	public final void testSend01() throws IOException, MandrillApiError {

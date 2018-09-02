@@ -6,11 +6,10 @@ package io.github.esarbanis.mandrill.api.rejects;
 import java.io.IOException;
 import java.util.HashMap;
 
-import io.github.esarbanis.mandrill.api.common.JsonSerializer;
-import io.github.esarbanis.mandrill.api.common.MandrillSubContext;
 import io.github.esarbanis.mandrill.api.common.MandrillApiError;
 import io.github.esarbanis.mandrill.api.common.MandrillHelperClasses.MandrillRejectsAdded;
 import io.github.esarbanis.mandrill.api.common.MandrillHelperClasses.MandrillRejectsDeleted;
+import io.github.esarbanis.mandrill.api.common.MandrillSubContext;
 import io.github.esarbanis.mandrill.api.common.RequestDispatcher;
 
 /**
@@ -20,8 +19,8 @@ public class MandrillRejectsApi extends MandrillSubContext {
 	private final String key;
 	private final String rootUrl;
 
-	public MandrillRejectsApi(final String key, final String url, RequestDispatcher requestDispatcher, JsonSerializer jsonSerializer) {
-		super(requestDispatcher, jsonSerializer);
+	public MandrillRejectsApi(final String key, final String url, RequestDispatcher requestDispatcher) {
+		super(requestDispatcher);
 		this.key = key;
 		this.rootUrl = url;
 	}

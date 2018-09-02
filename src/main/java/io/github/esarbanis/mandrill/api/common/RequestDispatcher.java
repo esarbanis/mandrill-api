@@ -4,6 +4,6 @@ import java.io.IOException;
 
 public interface RequestDispatcher {
 
-	<T> T dispatch(final RequestModel<T> requestModel) throws MandrillApiError, IOException;
+	<T> T dispatch(final RequestContext<T> requestContext) throws MandrillApiError, IOException;
 
 }

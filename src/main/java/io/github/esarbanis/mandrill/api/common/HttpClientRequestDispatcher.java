@@ -6,12 +6,16 @@ import java.net.Proxy;
 import java.net.ProxySelector;
 import java.net.URI;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
 import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.conn.params.ConnRoutePNames;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
@@ -24,13 +28,13 @@ public class HttpClientRequestDispatcher implements RequestDispatcher {
 	private static final Logger LOG = LoggerFactory.getLogger(HttpClientRequestDispatcher.class);
 
 	private final CloseableHttpClient httpClient;
-	private final JsonSerializer serializer;
+	private final GsonJsonSerializer serializer;
 
 	public HttpClientRequestDispatcher() {
 		this(new GsonJsonSerializer());
 	}
 
-	public HttpClientRequestDispatcher(JsonSerializer serializer) {
+	public HttpClientRequestDispatcher(GsonJsonSerializer serializer) {
 		this.serializer = serializer;
 		PoolingHttpClientConnectionManager connexionManager = new PoolingHttpClientConnectionManager();
 		connexionManager.setDefaultMaxPerRoute(50);
@@ -43,18 +47,18 @@ public class HttpClientRequestDispatcher implements RequestDispatcher {
 				.build();
 	}
 
-	public HttpClientRequestDispatcher(JsonSerializer serializer, CloseableHttpClient httpClient) {
+	public HttpClientRequestDispatcher(GsonJsonSerializer serializer, CloseableHttpClient httpClient) {
 		this.serializer = serializer;
 		this.httpClient = httpClient;
 	}
 
 	@Override
-	public <T> T dispatch(RequestModel<T> requestModel) throws MandrillApiError, IOException {
+	public <T> T dispatch(RequestContext<T> requestContext) throws MandrillApiError, IOException {
 		HttpResponse response = null;
 		String responseString = null;
 		try {
 			// use proxy?
-			final HttpClientRequestDispatcher.ProxyData proxyData = detectProxyServer(requestModel.getUrl());
+			final HttpClientRequestDispatcher.ProxyData proxyData = detectProxyServer(requestContext.getUrl());
 			if (proxyData != null) {
 				if (LOG.isDebugEnabled()) {
 					LOG.debug("Using proxy @{}:{}", proxyData.host, proxyData.port);
@@ -62,16 +66,17 @@ public class HttpClientRequestDispatcher implements RequestDispatcher {
 				final HttpHost proxy = new HttpHost(proxyData.host, proxyData.port);
 				httpClient.getParams().setParameter(ConnRoutePNames.DEFAULT_PROXY, proxy);
 			}
-			LOG.debug("starting request '{}'", requestModel.getUrl());
-			response = httpClient.execute(requestModel.getRequest());
+			LOG.debug("starting request '{}'", requestContext.getUrl());
+			Map<String, ?> requestParams = requestContext.getRequestParams();
+			response = httpClient.execute(getRequest(requestParams, requestContext.getUrl()));
 			final StatusLine status = response.getStatusLine();
 			responseString = EntityUtils.toString(response.getEntity());
-			if (requestModel.validateResponseStatus(status.getStatusCode())) {
+			if (requestContext.validateResponseStatus(status.getStatusCode())) {
 				try {
-					return requestModel.handleResponse(responseString);
+					return handleResponse(responseString, requestContext.getResponseContentType());
 
 				} catch (final HandleResponseException e) {
-					throw new IOException("Failed to parse response from request '" + requestModel.getUrl() + "'", e);
+					throw new IOException("Failed to parse response from request '" + requestContext.getUrl() + "'", e);
 
 				}
 
@@ -97,6 +102,33 @@ public class HttpClientRequestDispatcher implements RequestDispatcher {
 				LOG.error("Error consuming entity", e);
 				throw e;
 			}
+		}
+	}
+
+	public final HttpRequestBase getRequest(Map<String, ? extends Object> requestParams, String url) {
+		final String paramsStr = serializer.toJsonString(
+				requestParams, requestParams.getClass());
+		LOG.debug("raw content for request:\n" +paramsStr);
+		final StringEntity entity = new StringEntity(paramsStr, "UTF-8");
+		entity.setContentType("application/json");
+		final HttpPost request = new HttpPost(url);
+		request.setEntity(entity);
+		return request;
+
+	}
+
+	private <T> T handleResponse(final String responseString, Class<T> responseType)
+			throws HandleResponseException {
+
+		try {
+			LOG.debug("raw content from response:\n" +responseString);
+			return serializer.fromJsonString(responseString, responseType);
+
+		} catch(final Throwable t) {
+			String msg = "Error handling Mandrill response " +
+					((responseString != null)?": '"+responseString+"'" : "");
+			throw new HandleResponseException(msg, t);
+
 		}
 	}
 

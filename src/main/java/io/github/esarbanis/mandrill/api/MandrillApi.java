@@ -3,9 +3,7 @@
  */
 package io.github.esarbanis.mandrill.api;
 
-import io.github.esarbanis.mandrill.api.common.GsonJsonSerializer;
 import io.github.esarbanis.mandrill.api.common.HttpClientRequestDispatcher;
-import io.github.esarbanis.mandrill.api.common.JsonSerializer;
 import io.github.esarbanis.mandrill.api.common.RequestDispatcher;
 import io.github.esarbanis.mandrill.api.exports.MandrillExportsApi;
 import io.github.esarbanis.mandrill.api.inbound.MandrillInboundApi;
@@ -47,9 +45,9 @@ public class MandrillApi {
 	}
 	
 	public MandrillApi(final String key, final String rootUrl) {
-		this(key, rootUrl, new HttpClientRequestDispatcher(), new GsonJsonSerializer());
+		this(key, rootUrl, new HttpClientRequestDispatcher());
 	}
-	public MandrillApi(String key, String rootUrl, RequestDispatcher requestDispatcher, JsonSerializer jsonSerializer) {
+	public MandrillApi(String key, String rootUrl, RequestDispatcher requestDispatcher) {
 		if(key == null) {
 			throw new NullPointerException(
 					"'key' is null; please provide Mandrill API key");
@@ -59,19 +57,19 @@ public class MandrillApi {
 					String.format("'rootUrl' is null; please provide Mandrill URL (default: %s)", rootUrl));
 		}
 		this.key = key;
-		users = new MandrillUsersApi(key, rootUrl, requestDispatcher, jsonSerializer);
-		messages = new MandrillMessagesApi(key, rootUrl, requestDispatcher, jsonSerializer);
-		tags = new MandrillTagsApi(key, rootUrl, requestDispatcher, jsonSerializer);
-		rejects = new MandrillRejectsApi(key, rootUrl, requestDispatcher, jsonSerializer);
-		whitelists = new MandrillWhitelistsApi(key, rootUrl, requestDispatcher, jsonSerializer);
-		senders = new MandrillSendersApi(key, rootUrl, requestDispatcher, jsonSerializer);
-		urls = new MandrillUrlsApi(key, rootUrl, requestDispatcher, jsonSerializer);
-		templates = new MandrillTemplatesApi(key, rootUrl, requestDispatcher, jsonSerializer);
-		webhooks = new MandrillWebhooksApi(key, rootUrl, requestDispatcher, jsonSerializer);
-		subaccounts = new MandrillSubaccountsApi(key, rootUrl, requestDispatcher, jsonSerializer);
-		inbound = new MandrillInboundApi(key, rootUrl, requestDispatcher, jsonSerializer);
-		exports = new MandrillExportsApi(key, rootUrl, requestDispatcher, jsonSerializer);
-		ips = new MandrillIpsApi(key, rootUrl, requestDispatcher, jsonSerializer);
+		users = new MandrillUsersApi(key, rootUrl, requestDispatcher);
+		messages = new MandrillMessagesApi(key, rootUrl, requestDispatcher);
+		tags = new MandrillTagsApi(key, rootUrl, requestDispatcher);
+		rejects = new MandrillRejectsApi(key, rootUrl, requestDispatcher);
+		whitelists = new MandrillWhitelistsApi(key, rootUrl, requestDispatcher);
+		senders = new MandrillSendersApi(key, rootUrl, requestDispatcher);
+		urls = new MandrillUrlsApi(key, rootUrl, requestDispatcher);
+		templates = new MandrillTemplatesApi(key, rootUrl, requestDispatcher);
+		webhooks = new MandrillWebhooksApi(key, rootUrl, requestDispatcher);
+		subaccounts = new MandrillSubaccountsApi(key, rootUrl, requestDispatcher);
+		inbound = new MandrillInboundApi(key, rootUrl, requestDispatcher);
+		exports = new MandrillExportsApi(key, rootUrl, requestDispatcher);
+		ips = new MandrillIpsApi(key, rootUrl, requestDispatcher);
 	}
 
 	/**

@@ -9,26 +9,26 @@ import static org.mockito.Mockito.when;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.net.URI;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.StatusLine;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.junit.Assert;
+import org.junit.Before;
+
 import io.github.esarbanis.mandrill.api.common.GsonJsonSerializer;
 import io.github.esarbanis.mandrill.api.common.HttpClientRequestDispatcher;
 import io.github.esarbanis.mandrill.api.common.RequestDispatcher;
-import org.junit.Before;
 
 /**
  *
  */
 public abstract class MandrillTestCase {
 
-	protected static String KEY = "KEY";
-	protected static String ROOT_URL = "http://example.com/";
-
 	protected MandrillApi mandrillApi;
-	protected CloseableHttpClient httpClient;
+	private CloseableHttpClient httpClient;
 
 	protected void mockResponse(String apiPath, int status, String json) throws IOException {
 		CloseableHttpResponse response = mock(CloseableHttpResponse.class);
@@ -40,7 +40,14 @@ public abstract class MandrillTestCase {
 		when(statusLine.getStatusCode()).thenReturn(status);
 		when(response.getStatusLine()).thenReturn(statusLine);
 		when(response.getEntity()).thenReturn(httpEntity);
-		when(httpClient.execute(argThat(argument -> argument.getURI().getPath().equals(apiPath)))).thenReturn(response);
+		when(httpClient.execute(argThat(argument -> {
+			URI uri = argument.getURI();
+			boolean match = uri.getPath().equals(apiPath);
+			if (!match) {
+				Assert.fail("URI " + uri + " does not contain the desired path " + apiPath);
+			}
+			return true;
+		}))).thenReturn(response);
 	}
 
 	@Before
@@ -48,7 +55,9 @@ public abstract class MandrillTestCase {
 		httpClient = mock(CloseableHttpClient.class);
 		RequestDispatcher requestDispatcher = new HttpClientRequestDispatcher(new GsonJsonSerializer(), httpClient);
 
-		mandrillApi = new MandrillApi(KEY, ROOT_URL, requestDispatcher, new GsonJsonSerializer());
+		String rootUrl = "http://example.com/";
+		String key = "key";
+		mandrillApi = new MandrillApi(key, rootUrl, requestDispatcher);
 	}
 
 	protected static String mailToAddress() {

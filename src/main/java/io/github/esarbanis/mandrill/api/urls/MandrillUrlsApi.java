@@ -6,7 +6,6 @@ package io.github.esarbanis.mandrill.api.urls;
 import java.io.IOException;
 import java.util.HashMap;
 
-import io.github.esarbanis.mandrill.api.common.JsonSerializer;
 import io.github.esarbanis.mandrill.api.common.MandrillApiError;
 import io.github.esarbanis.mandrill.api.common.MandrillSubContext;
 import io.github.esarbanis.mandrill.api.common.RequestDispatcher;
@@ -18,8 +17,8 @@ public class MandrillUrlsApi extends MandrillSubContext {
 	private final String key;
 	private final String rootUrl;
 
-	public MandrillUrlsApi(final String key, final String url, RequestDispatcher requestDispatcher, JsonSerializer jsonSerializer) {
-		super(requestDispatcher, jsonSerializer);
+	public MandrillUrlsApi(final String key, final String url, RequestDispatcher requestDispatcher) {
+		super(requestDispatcher);
 		this.key = key;
 		this.rootUrl = url;
 	}

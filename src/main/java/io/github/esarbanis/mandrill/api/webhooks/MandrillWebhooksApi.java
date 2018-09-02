@@ -8,9 +8,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
-import io.github.esarbanis.mandrill.api.common.JsonSerializer;
-import io.github.esarbanis.mandrill.api.common.MandrillSubContext;
 import io.github.esarbanis.mandrill.api.common.MandrillApiError;
+import io.github.esarbanis.mandrill.api.common.MandrillSubContext;
 import io.github.esarbanis.mandrill.api.common.RequestDispatcher;
 
 /**
@@ -20,8 +19,8 @@ public class MandrillWebhooksApi extends MandrillSubContext {
 	private final String key;
 	private final String rootUrl;
 
-	public MandrillWebhooksApi(final String key, final String url, RequestDispatcher requestDispatcher, JsonSerializer jsonSerializer) {
-		super(requestDispatcher, jsonSerializer);
+	public MandrillWebhooksApi(final String key, final String url, RequestDispatcher requestDispatcher) {
+		super(requestDispatcher);
 		this.key = key;
 		this.rootUrl = url;
 	}

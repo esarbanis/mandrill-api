@@ -7,11 +7,9 @@ import java.util.Map;
 public abstract class MandrillSubContext {
 
 	private final RequestDispatcher requestDispatcher;
-	private final JsonSerializer jsonSerializer;
 
-	protected MandrillSubContext(RequestDispatcher requestDispatcher, JsonSerializer jsonSerializer) {
+	protected MandrillSubContext(RequestDispatcher requestDispatcher) {
 		this.requestDispatcher = requestDispatcher;
-		this.jsonSerializer = jsonSerializer;
 	}
 
 	/**
@@ -37,8 +35,8 @@ public abstract class MandrillSubContext {
 			final Map<String,Object> params, Class<OUT> responseType)
 			throws MandrillApiError, IOException {
 
-		final MandrillRequest<OUT> requestModel =
-				new MandrillRequest<>(url, params, responseType, jsonSerializer);
+		final MandrillRequestRequest<OUT> requestModel =
+				new MandrillRequestRequest<>(url, params, responseType);
 		return requestDispatcher.dispatch(requestModel);
 
 	}

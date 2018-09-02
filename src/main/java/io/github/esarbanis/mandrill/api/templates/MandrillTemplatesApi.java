@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import io.github.esarbanis.mandrill.api.common.JsonSerializer;
 import io.github.esarbanis.mandrill.api.common.MandrillApiError;
 import io.github.esarbanis.mandrill.api.common.MandrillContentWrapper;
 import io.github.esarbanis.mandrill.api.common.MandrillHelperClasses.MandrillRenderTemplateResponse;
@@ -23,8 +22,8 @@ public class MandrillTemplatesApi extends MandrillSubContext {
 	private final String key;
 	private final String rootUrl;
 
-	public MandrillTemplatesApi(final String key, final String url, RequestDispatcher requestDispatcher, JsonSerializer jsonSerializer) {
-		super(requestDispatcher, jsonSerializer);
+	public MandrillTemplatesApi(final String key, final String url, RequestDispatcher requestDispatcher) {
+		super(requestDispatcher);
 		this.key = key;
 		this.rootUrl = url;
 	}

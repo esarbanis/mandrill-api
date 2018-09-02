@@ -7,9 +7,8 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
 
-import io.github.esarbanis.mandrill.api.common.JsonSerializer;
-import io.github.esarbanis.mandrill.api.common.MandrillSubContext;
 import io.github.esarbanis.mandrill.api.common.MandrillApiError;
+import io.github.esarbanis.mandrill.api.common.MandrillSubContext;
 import io.github.esarbanis.mandrill.api.common.RequestDispatcher;
 
 /**
@@ -19,8 +18,8 @@ public class MandrillInboundApi extends MandrillSubContext {
 	private final String key;
 	private final String rootUrl;
 
-	public MandrillInboundApi(final String key, final String url, RequestDispatcher requestDispatcher, JsonSerializer jsonSerializer) {
-		super(requestDispatcher, jsonSerializer);
+	public MandrillInboundApi(final String key, final String url, RequestDispatcher requestDispatcher) {
+		super(requestDispatcher);
 		this.key = key;
 		this.rootUrl = url;
 	}

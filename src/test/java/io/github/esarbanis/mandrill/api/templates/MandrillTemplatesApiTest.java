@@ -9,6 +9,7 @@ import java.util.HashMap;
 import io.github.esarbanis.mandrill.api.MandrillTestCase;
 import junit.framework.Assert;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import io.github.esarbanis.mandrill.api.common.MandrillApiError;
@@ -17,6 +18,7 @@ import io.github.esarbanis.mandrill.api.urls.MandrillTimeSeries;
 /**
  * @since Mar 22, 2013
  */
+@Ignore("Need to wire mocks")
 public final class MandrillTemplatesApiTest extends MandrillTestCase {
 
 	@Test(expected=MandrillApiError.class)

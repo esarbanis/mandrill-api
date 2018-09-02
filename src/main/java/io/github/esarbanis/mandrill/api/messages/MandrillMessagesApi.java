@@ -10,7 +10,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import io.github.esarbanis.mandrill.api.common.JsonSerializer;
 import io.github.esarbanis.mandrill.api.common.MandrillApiError;
 import io.github.esarbanis.mandrill.api.common.MandrillSubContext;
 import io.github.esarbanis.mandrill.api.common.RequestDispatcher;
@@ -22,8 +21,8 @@ public class MandrillMessagesApi extends MandrillSubContext {
 	private final String key;
 	private final String rootUrl;
 
-	public MandrillMessagesApi(final String key, final String url, RequestDispatcher requestDispatcher, JsonSerializer jsonSerializer) {
-		super(requestDispatcher, jsonSerializer);
+	public MandrillMessagesApi(final String key, final String url, RequestDispatcher requestDispatcher) {
+		super(requestDispatcher);
 		this.key = key;
 		this.rootUrl = url;
 	}

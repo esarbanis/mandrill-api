@@ -7,8 +7,6 @@ import java.util.Date;
 import java.util.Map;
 import java.util.TimeZone;
 
-import io.github.esarbanis.mandrill.api.messages.MandrillMessage;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
@@ -19,7 +17,9 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 
-public class GsonJsonSerializer implements JsonSerializer {
+import io.github.esarbanis.mandrill.api.messages.MandrillMessage;
+
+public class GsonJsonSerializer {
 
 	private static final String dateFormatStr = "yyyy-MM-dd HH:mm:ss";
 
@@ -37,7 +37,6 @@ public class GsonJsonSerializer implements JsonSerializer {
 		return gson.fromJson(json, classOfT);
 	}
 
-	@Override
 	public String toJsonString(Object src, Type typeOfSrc) {
 		return gson.toJson(src, typeOfSrc);
 	}
