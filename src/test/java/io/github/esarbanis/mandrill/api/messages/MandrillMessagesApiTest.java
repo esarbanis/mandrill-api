@@ -20,12 +20,6 @@ import io.github.esarbanis.mandrill.api.messages.MandrillMessage.Recipient.Type;
 import io.github.esarbanis.mandrill.api.messages.MandrillMessageInfo.SMTPEvent;
 import junit.framework.Assert;
 
-/**
- * <p>Tests for the messages api implementations.</p>
- *
-
- * @since Mar 21, 2013
- */
 public final class MandrillMessagesApiTest extends MandrillTestCase {
 
 	GsonJsonSerializer jsonSerializer = new GsonJsonSerializer();

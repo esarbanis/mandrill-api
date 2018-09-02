@@ -14,10 +14,6 @@ import io.github.esarbanis.mandrill.api.MandrillTestCase;
 import io.github.esarbanis.mandrill.api.common.MandrillApiError;
 import io.github.esarbanis.mandrill.api.urls.MandrillTimeSeries;
 
-/**
- * <p>Tests for the tags api implementations.</p>
- * @since Mar 21, 2013
- */
 @Ignore("Need to wire mocks")
 public final class MandrillTagsApiTest extends MandrillTestCase {
 	

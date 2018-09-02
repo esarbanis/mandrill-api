@@ -13,9 +13,6 @@ import org.junit.Test;
 
 import io.github.esarbanis.mandrill.api.common.MandrillApiError;
 
-/**
- * @since Mar 22, 2013
- */
 @Ignore("Need to wire mocks")
 public final class MandrillWebhooksApiTest extends MandrillTestCase {
 	

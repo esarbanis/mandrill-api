@@ -14,10 +14,6 @@ import org.junit.Test;
 import io.github.esarbanis.mandrill.api.common.MandrillApiError;
 import io.github.esarbanis.mandrill.api.urls.MandrillTimeSeries;
 
-/**
- * <p>Tests for the senders api implementations.</p>
- * @since Mar 21, 2013
- */
 @Ignore("Need to wire mocks")
 public final class MandrillSendersApiTest extends MandrillTestCase {
 	
