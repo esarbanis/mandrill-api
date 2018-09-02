@@ -18,7 +18,7 @@ public final class MandrillRejectsApiTest extends MandrillTestCase {
 	
 	@Test(expected=MandrillApiError.class)
 	public final void testAdd() throws IOException, MandrillApiError {
-		mockResponse("/rejects/add.json", 400, Fixtures.Rejects.VALIDATION_ERROR_RESPONSE);
+		mockResponse("/rejects/add.json", 400, Fixtures.VALIDATION_ERROR_RESPONSE);
 
 		mandrillApi.rejects().add(null, null, null);
 		Assert.fail();
@@ -34,7 +34,7 @@ public final class MandrillRejectsApiTest extends MandrillTestCase {
 	
 	@Test(expected=MandrillApiError.class)
 	public final void testDelete() throws IOException, MandrillApiError {
-		mockResponse("/rejects/delete.json", 400, Fixtures.Rejects.VALIDATION_ERROR_RESPONSE);
+		mockResponse("/rejects/delete.json", 400, Fixtures.VALIDATION_ERROR_RESPONSE);
 
 		mandrillApi.rejects().delete(null);
 		Assert.fail();

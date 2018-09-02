@@ -5,6 +5,9 @@ public abstract class Fixtures {
 	private Fixtures() {
 	}
 
+	public static final String VALIDATION_ERROR_RESPONSE = "{\"status\":\"error\",\"code\":12,\"name\":\"ValidationError\",\"message\":\"The "
+			+ "parameters passed to the API call are invalid or not provided when required\"}";
+
 	public static class Users {
 
 		public static final String INFO_RESPONSE =
@@ -113,13 +116,17 @@ public abstract class Fixtures {
 	}
 
 	public static class Rejects {
-		public static final String VALIDATION_ERROR_RESPONSE = "{\"status\":\"error\",\"code\":12,\"name\":\"ValidationError\",\"message\":\"The "
-				+ "parameters passed to the API call are invalid or not provided when required\"}";
 
 		public static final String LIST_RESPONSE = "[{\"email\":\"example email\",\"reason\":\"hard-bounce\",\"detail\":\"550 mailbox does not "
 				+ "exist\",\"created_at\":\"2013-01-01 15:30:27\",\"last_event_at\":\"2013-01-01 15:30:27\",\"expires_at\":\"2013-01-01 15:30:49\","
 				+ "\"expired\":false,\"sender\":{\"address\":\"sender.example@mandrillapp.com\",\"created_at\":\"2013-01-01 15:30:27\",\"sent\":42,"
 				+ "\"hard_bounces\":42,\"soft_bounces\":42,\"rejects\":42,\"complaints\":42,\"unsubs\":42,\"opens\":42,\"clicks\":42,"
 				+ "\"unique_opens\":42,\"unique_clicks\":42},\"subaccount\":\"example subaccount\"}]";
+	}
+
+	public static class Whitelists {
+
+		public static final String LIST_RESPONSE = "[{\"email\":\"example email\",\"detail\":\"Whitelisted internal address\","
+				+ "\"created_at\":\"2013-01-01 15:30:32\"}]";
 	}
 }
