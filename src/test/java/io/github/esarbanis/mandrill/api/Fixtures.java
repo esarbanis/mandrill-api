@@ -85,4 +85,30 @@ public abstract class Fixtures {
 		public static final String PARSE_ERROR_RESPONSE = "{\"status\":\"error\",\"code\":-1,\"name\":\"ValidationError\",\"message\":\"You must "
 				+ "specify a raw_message value\"}";
 	}
+
+	public static class Tags {
+		public static final String LIST_RESPONSE = "[{\"tag\":\"example-tag\",\"reputation\":42,\"sent\":42,\"hard_bounces\":42,\"soft_bounces\":42,"
+				+ "\"rejects\":42,\"complaints\":42,\"unsubs\":42,\"opens\":42,\"clicks\":42,\"unique_opens\":42,\"unique_clicks\":42}]";
+
+		public static final String INVALID_TAG_NAME_RESPONSE = "{\"status\":\"error\",\"code\":-1,\"name\":\"Invalid_Tag_Name\",\"message\":\"The "
+				+ "requested tag does not exist or contains invalid characters\"}";
+
+		public static final String INFO_RESPONSE = "{\"tag\":\"example-tag\",\"sent\":42,\"hard_bounces\":42,\"soft_bounces\":42,\"rejects\":42,"
+				+ "\"complaints\":42,\"unsubs\":42,\"opens\":42,\"clicks\":42,\"stats\":{\"today\":{\"sent\":42,\"hard_bounces\":42,"
+				+ "\"soft_bounces\":42,\"rejects\":42,\"complaints\":42,\"unsubs\":42,\"opens\":42,\"unique_opens\":42,\"clicks\":42,"
+				+ "\"unique_clicks\":42},\"last_7_days\":{\"sent\":42,\"hard_bounces\":42,\"soft_bounces\":42,\"rejects\":42,\"complaints\":42,"
+				+ "\"unsubs\":42,\"opens\":42,\"unique_opens\":42,\"clicks\":42,\"unique_clicks\":42},\"last_30_days\":{\"sent\":42,"
+				+ "\"hard_bounces\":42,\"soft_bounces\":42,\"rejects\":42,\"complaints\":42,\"unsubs\":42,\"opens\":42,\"unique_opens\":42,"
+				+ "\"clicks\":42,\"unique_clicks\":42},\"last_60_days\":{\"sent\":42,\"hard_bounces\":42,\"soft_bounces\":42,\"rejects\":42,"
+				+ "\"complaints\":42,\"unsubs\":42,\"opens\":42,\"unique_opens\":42,\"clicks\":42,\"unique_clicks\":42},"
+				+ "\"last_90_days\":{\"sent\":42,\"hard_bounces\":42,\"soft_bounces\":42,\"rejects\":42,\"complaints\":42,\"unsubs\":42,"
+				+ "\"opens\":42,\"unique_opens\":42,\"clicks\":42,\"unique_clicks\":42}}}";
+
+		public static final String TIME_SERIES_RESPONSE = "[{\"time\":\"2013-01-01 15:00:00\",\"sent\":42,\"hard_bounces\":42,\"soft_bounces\":42,"
+				+ "\"rejects\":42,\"complaints\":42,\"unsubs\":42,\"opens\":42,\"unique_opens\":42,\"clicks\":42,\"unique_clicks\":42}]";
+
+		public static final String ALL_TIME_SERIES_RESPONSE = "[{\"time\":\"2013-01-01 15:00:00\",\"sent\":42,\"hard_bounces\":42,"
+				+ "\"soft_bounces\":42,\"rejects\":42,\"complaints\":42,\"unsubs\":42,\"opens\":42,\"unique_opens\":42,\"clicks\":42,"
+				+ "\"unique_clicks\":42}]";
+	}
 }
